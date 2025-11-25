@@ -21,15 +21,37 @@ function BacktestDashboard({ strategy, onClose, onJoinWaitlist }) {
         </div>
 
         <div className="backtest-content">
-          <div className="backtest-team-section">
-            <div className="team-profile">
-              <div className="team-avatar">
-                <div className="avatar-placeholder">Q</div>
+          <div className="backtest-top-section">
+            <div className="backtest-team-section">
+              <div className="team-profile">
+                <div className="team-avatar">
+                  <div className="avatar-placeholder">Q</div>
+                </div>
+                <div className="team-info">
+                  <div className="team-name">Quant Team</div>
+                  <div className="team-badge">Community Contributor</div>
+                </div>
               </div>
-              <div className="team-info">
-                <div className="team-name">Quant Team</div>
-                <div className="team-badge">Community Contributor</div>
-              </div>
+            </div>
+
+            <div className="backtest-pnl-summary">
+              <span className="pnl-label">PnL</span>
+              <span className="pnl-value positive">
+                {strategy.backtest.pnl} ({strategy.backtest.pnlPercent}%)
+              </span>
+            </div>
+
+            <div className="backtest-actions">
+              <button className="btn-join-waitlist" onClick={onJoinWaitlist}>
+                Join Waitlist
+              </button>
+            </div>
+
+            <div className="backtest-date-range">
+              <span className="date-label">Backtest Period:</span>
+              <span className="date-value">
+                {strategy.backtest.startDate || 'Jan 1, 2024'} - {strategy.backtest.endDate || 'Jan 6, 2024'}
+              </span>
             </div>
           </div>
 
@@ -91,19 +113,32 @@ function BacktestDashboard({ strategy, onClose, onJoinWaitlist }) {
                 <span className="metric-value negative">{strategy.backtest.totalLoss || 'N/A'}</span>
               </div>
             </div>
-            
-            <div className="backtest-pnl-summary">
-              <span className="pnl-label">PnL</span>
-              <span className="pnl-value positive">
-                {strategy.backtest.pnl} ({strategy.backtest.pnlPercent}%)
-              </span>
-            </div>
           </div>
 
-          <div className="backtest-actions">
-            <button className="btn-join-waitlist" onClick={onJoinWaitlist}>
-              Join Waitlist
-            </button>
+          <div className="backtest-section">
+            <h3 className="backtest-section-title">Closed Trades</h3>
+            <div className="backtest-trades-container">
+              <div className="backtest-trades-header">
+                <div className="trade-col">Time</div>
+                <div className="trade-col">Type</div>
+                <div className="trade-col">Entry</div>
+                <div className="trade-col">Exit</div>
+                <div className="trade-col">PnL</div>
+              </div>
+              <div className="backtest-trades-list">
+                {(strategy.backtest.trades || []).map((trade, index) => (
+                  <div key={index} className={`backtest-trade-row ${trade.pnl >= 0 ? 'trade-win' : 'trade-loss'}`}>
+                    <div className="trade-col">{trade.timestamp}</div>
+                    <div className="trade-col">{trade.type}</div>
+                    <div className="trade-col">{trade.entry}</div>
+                    <div className="trade-col">{trade.exit}</div>
+                    <div className={`trade-col ${trade.pnl >= 0 ? 'positive' : 'negative'}`}>
+                      {trade.pnl >= 0 ? '+' : ''}{trade.pnl}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </div>

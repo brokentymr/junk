@@ -1672,6 +1672,33 @@ body {
   padding: var(--spacing-lg);
 }
 
+.backtest-top-section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-lg);
+  padding-bottom: var(--spacing-lg);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.backtest-date-range {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+.date-label {
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.date-value {
+  color: var(--text-primary);
+}
+
 .backtest-section {
   margin-bottom: var(--spacing-lg);
 }
@@ -1831,10 +1858,72 @@ body {
 }
 
 .backtest-actions {
-  margin-top: var(--spacing-md);
   display: flex;
   justify-content: center;
-  padding-top: var(--spacing-md);
+}
+
+.backtest-trades-container {
+  background-color: var(--bg-secondary);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.backtest-trades-header {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr 1fr 1fr;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-md);
+  background-color: rgba(255, 215, 0, 0.05);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  font-weight: 600;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-secondary);
+}
+
+.backtest-trades-list {
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.backtest-trade-row {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr 1fr 1fr;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-sm) var(--spacing-md);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  font-size: 0.9rem;
+  transition: background-color var(--transition-base);
+}
+
+.backtest-trade-row:hover {
+  background-color: rgba(255, 255, 255, 0.02);
+}
+
+.backtest-trade-row.trade-win {
+  border-left: 3px solid #00ff00;
+}
+
+.backtest-trade-row.trade-loss {
+  border-left: 3px solid #ff4444;
+}
+
+.trade-col {
+  display: flex;
+  align-items: center;
+  color: var(--text-primary);
+}
+
+.trade-col.positive {
+  color: #00ff00;
+  font-weight: 600;
+}
+
+.trade-col.negative {
+  color: #ff4444;
+  font-weight: 600;
 }
 
 .btn-join-waitlist {

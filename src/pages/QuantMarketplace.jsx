@@ -13,6 +13,47 @@ import {
 } from '../components/StrategyIcons'
 import '../styles/globals.css'
 
+// Helper function to generate sample trades
+const generateTrades = (totalTrades, wins, avgWin, avgLoss) => {
+  const trades = []
+  const winCount = wins
+  const lossCount = totalTrades - wins
+  
+  // Generate timestamps over 5 days
+  const startDate = new Date('2024-01-01T00:00:00')
+  const endDate = new Date('2024-01-06T00:00:00')
+  const timeDiff = endDate - startDate
+  
+  for (let i = 0; i < totalTrades; i++) {
+    const isWin = i < winCount
+    const pnl = isWin 
+      ? parseFloat(avgWin.replace('$', '').replace(',', '')) + (Math.random() * 200 - 100)
+      : -parseFloat(avgLoss.replace('$', '').replace(',', '')) - (Math.random() * 50)
+    
+    const timestamp = new Date(startDate.getTime() + (timeDiff * i / totalTrades))
+    const timeStr = timestamp.toLocaleString('en-US', { 
+      month: 'short', 
+      day: 'numeric', 
+      hour: '2-digit', 
+      minute: '2-digit' 
+    })
+    
+    const entryPrice = 45000 + (Math.random() * 5000)
+    const exitPrice = entryPrice + (pnl / 0.1) // Assuming 0.1 BTC position
+    
+    trades.push({
+      timestamp: timeStr,
+      type: Math.random() > 0.5 ? 'LONG' : 'SHORT',
+      entry: `$${entryPrice.toFixed(2)}`,
+      exit: `$${exitPrice.toFixed(2)}`,
+      pnl: `$${pnl.toFixed(2)}`
+    })
+  }
+  
+  // Sort by timestamp (most recent first)
+  return trades.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp))
+}
+
 const strategies = [
   {
     id: 1,
@@ -42,7 +83,10 @@ const strategies = [
       totalProfit: "$13,217.67",
       totalLoss: "$919.63",
       roi: "+12.30%",
-      losses: 41
+      losses: 41,
+      startDate: "Jan 1, 2024",
+      endDate: "Jan 6, 2024",
+      trades: generateTrades(127, 86, "$1,888.24", "$131.38")
     },
     waitlistUrl: "https://form.typeform.com/to/placeholder"
   },
@@ -74,7 +118,10 @@ const strategies = [
       totalProfit: "$9,591.20",
       totalLoss: "$671.20",
       roi: "+8.92%",
-      losses: 17
+      losses: 17,
+      startDate: "Jan 1, 2024",
+      endDate: "Jan 6, 2024",
+      trades: generateTrades(94, 77, "$1,245.60", "$98.20")
     },
     waitlistUrl: "https://form.typeform.com/to/placeholder"
   },
@@ -106,7 +153,10 @@ const strategies = [
       totalProfit: "$15,315.00",
       totalLoss: "$1,975.00",
       roi: "+15.34%",
-      losses: 85
+      losses: 85,
+      startDate: "Jan 1, 2024",
+      endDate: "Jan 6, 2024",
+      trades: generateTrades(203, 118, "$892.50", "$145.30")
     },
     waitlistUrl: "https://form.typeform.com/to/placeholder"
   },
@@ -138,7 +188,10 @@ const strategies = [
       totalProfit: "$22,180.00",
       totalLoss: "$1,183.20",
       roi: "+22.18%",
-      losses: 49
+      losses: 49,
+      startDate: "Jan 1, 2024",
+      endDate: "Jan 6, 2024",
+      trades: generateTrades(89, 40, "$2,218.00", "$118.40")
     },
     waitlistUrl: "https://form.typeform.com/to/placeholder"
   },
@@ -170,7 +223,10 @@ const strategies = [
       totalProfit: "$9,670.00",
       totalLoss: "$1,547.20",
       roi: "+9.67%",
-      losses: 75
+      losses: 75,
+      startDate: "Jan 1, 2024",
+      endDate: "Jan 6, 2024",
+      trades: generateTrades(156, 81, "$645.33", "$103.20")
     },
     waitlistUrl: "https://form.typeform.com/to/placeholder"
   },
@@ -202,7 +258,10 @@ const strategies = [
       totalProfit: "$7,890.00",
       totalLoss: "$1,455.00",
       roi: "+7.89%",
-      losses: 68
+      losses: 68,
+      startDate: "Jan 1, 2024",
+      endDate: "Jan 6, 2024",
+      trades: generateTrades(234, 166, "$387.50", "$71.50")
     },
     waitlistUrl: "https://form.typeform.com/to/placeholder"
   },
@@ -234,7 +293,10 @@ const strategies = [
       totalProfit: "$6,540.00",
       totalLoss: "$1,565.40",
       roi: "+6.54%",
-      losses: 75
+      losses: 75,
+      startDate: "Jan 1, 2024",
+      endDate: "Jan 6, 2024",
+      trades: generateTrades(312, 237, "$234.50", "$56.10")
     },
     waitlistUrl: "https://form.typeform.com/to/placeholder"
   },
@@ -266,7 +328,10 @@ const strategies = [
       totalProfit: "$13,217.67",
       totalLoss: "$4,067.52",
       roi: "+5.54%",
-      losses: 39
+      losses: 39,
+      startDate: "Jan 1, 2024",
+      endDate: "Jan 6, 2024",
+      trades: generateTrades(57, 18, "$1,888.24", "$580.80")
     },
     waitlistUrl: "https://form.typeform.com/to/placeholder"
   }
