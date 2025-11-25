@@ -1581,9 +1581,9 @@ body {
   background-color: var(--bg-card);
   border: 2px solid var(--accent-yellow);
   border-radius: var(--radius-lg);
-  max-width: 800px;
-  width: 100%;
-  max-height: 90vh;
+  max-width: 650px;
+  width: 90%;
+  max-height: 85vh;
   overflow-y: auto;
   position: relative;
   animation: slideUp 0.3s ease;
@@ -1629,8 +1629,8 @@ body {
 .backtest-header {
   display: flex;
   align-items: center;
-  gap: var(--spacing-lg);
-  padding: var(--spacing-xl);
+  gap: var(--spacing-md);
+  padding: var(--spacing-lg);
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
@@ -1669,11 +1669,11 @@ body {
 }
 
 .backtest-content {
-  padding: var(--spacing-xl);
+  padding: var(--spacing-lg);
 }
 
 .backtest-section {
-  margin-bottom: var(--spacing-xl);
+  margin-bottom: var(--spacing-lg);
 }
 
 .backtest-section:last-child {
@@ -1681,18 +1681,18 @@ body {
 }
 
 .backtest-section-title {
-  font-size: 1.25rem;
+  font-size: 1.1rem;
   font-weight: 600;
   color: var(--text-primary);
-  margin-bottom: var(--spacing-md);
+  margin-bottom: var(--spacing-sm);
   display: flex;
   align-items: center;
   gap: var(--spacing-sm);
 }
 
 .backtest-team-section {
-  margin-bottom: var(--spacing-lg);
-  padding-bottom: var(--spacing-lg);
+  margin-bottom: var(--spacing-md);
+  padding-bottom: var(--spacing-md);
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
@@ -1744,15 +1744,15 @@ body {
 
 .backtest-results-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-  gap: var(--spacing-md);
-  margin-bottom: var(--spacing-lg);
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-md);
 }
 
 .backtest-metric-card {
   background-color: var(--bg-secondary);
   border-radius: var(--radius-sm);
-  padding: var(--spacing-md);
+  padding: var(--spacing-sm);
   display: flex;
   flex-direction: column;
   gap: var(--spacing-xs);
@@ -1805,11 +1805,11 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: var(--spacing-md);
+  padding: var(--spacing-sm);
   background-color: rgba(0, 255, 0, 0.05);
   border-radius: var(--radius-sm);
   border: 1px solid rgba(0, 255, 0, 0.2);
-  margin-top: var(--spacing-md);
+  margin-top: var(--spacing-sm);
 }
 
 .pnl-label {
@@ -1831,9 +1831,10 @@ body {
 }
 
 .backtest-actions {
-  margin-top: var(--spacing-xl);
+  margin-top: var(--spacing-md);
   display: flex;
   justify-content: center;
+  padding-top: var(--spacing-md);
 }
 
 .btn-join-waitlist {
