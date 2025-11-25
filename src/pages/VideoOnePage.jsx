@@ -2,12 +2,6 @@ import CardSlider from '../components/CardSlider'
 
 const video1Outline = [
   {
-    title: "Who Are We",
-    body: "We are data scientists, quants, and blockchain infrastructure developers who have facilitated more than $1B in transaction volume over the last 5 years across Cosmos, Solana, Ethereum, BNB, and TON.",
-    script: "We are data scientists, quants, and blockchain infrastructure developers with a proven track record. Over the last 5 years, we've facilitated more than $1 billion in transaction volume across major blockchain ecosystems including Cosmos, Solana, Ethereum, BNB, and TON. Our expertise spans quantitative trading, infrastructure development, and cutting-edge blockchain technology.",
-    animationType: "network-ecosystem"
-  },
-  {
     title: "A New Quant Era",
     body: "LFG is building the first modular on-chain quant ecosystem — fast, automated, composable.",
     script: "Welcome to the future of decentralized finance. We're not just building another platform—we're creating the infrastructure for an entirely new quant economy. One that's fast, automated, and completely composable.",
@@ -47,6 +41,12 @@ const video1Outline = [
     title: "The Modular Quant Economy",
     body: "Users, quants, bots, and liquidity form a self-reinforcing network.",
     script: "This isn't just a platform—it's an economy. Users, quants, bots, and liquidity providers all connect in a self-reinforcing network. Each component strengthens the others, creating value for everyone.",
+    animationType: "network-ecosystem"
+  },
+  {
+    title: "Who Are We",
+    body: "We are data scientists, quants, and blockchain infrastructure developers who have facilitated more than $1B in transaction volume over the last 5 years across Cosmos, Solana, Ethereum, BNB, and TON.",
+    script: "We are data scientists, quants, and blockchain infrastructure developers with a proven track record. Over the last 5 years, we've facilitated more than $1 billion in transaction volume across major blockchain ecosystems including Cosmos, Solana, Ethereum, BNB, and TON.",
     animationType: "network-ecosystem"
   },
   {
