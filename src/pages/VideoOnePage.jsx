@@ -4,7 +4,7 @@ const video1Outline = [
   {
     title: "Who Are We",
     body: "We are data scientists, quants, and blockchain infrastructure developers who have facilitated more than $1B in transaction volume over the last 5 years across Cosmos, Solana, Ethereum, BNB, and TON.",
-    script: "We're not just another team in the space. We're a collective of data scientists, quantitative analysts, and blockchain infrastructure developers with a proven track record. Over the past five years, we've facilitated over one billion dollars in transaction volume across the most prominent blockchain ecosystems—Cosmos, Solana, Ethereum, BNB Chain, and TON. This experience is what powers LFG.",
+    script: "We are data scientists, quants, and blockchain infrastructure developers with a proven track record. Over the last 5 years, we've facilitated more than $1 billion in transaction volume across major blockchain ecosystems including Cosmos, Solana, Ethereum, BNB, and TON. Our expertise spans quantitative trading, infrastructure development, and cutting-edge blockchain technology.",
     animationType: "network-ecosystem"
   },
   {
