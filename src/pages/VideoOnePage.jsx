@@ -1,4 +1,3 @@
-import NavBar from '../components/NavBar'
 import CardSlider from '../components/CardSlider'
 
 const video1Outline = [
@@ -55,11 +54,10 @@ const video1Outline = [
 function VideoOnePage() {
   return (
     <div className="page">
-      <NavBar />
       <div className="page-content">
-        <h1 className="page-title">The LFG Quant Ecosystem</h1>
+        <h1 className="page-title">LFG: Quant Strategies Unchained</h1>
         <div className="slider-section">
-          <p className="slider-instruction">Use arrows or swipe to navigate</p>
+          <p className="slider-instruction">Explore how LFG is empowering a new generation of retail traders with best-in-class quant agents for perpetual DEX trading</p>
           <CardSlider cards={video1Outline} />
         </div>
       </div>

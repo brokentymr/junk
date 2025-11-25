@@ -131,10 +131,13 @@ body {
 .slider-instruction {
   text-align: center;
   color: var(--text-secondary);
-  margin-bottom: var(--spacing-md);
-  font-size: 0.9rem;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
+  margin-bottom: var(--spacing-lg);
+  font-size: 1rem;
+  line-height: 1.6;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 var(--spacing-md);
 }
 
 /* Presentation Turnstile Styles */
@@ -153,14 +156,16 @@ body {
 .presentation-container {
   position: relative;
   width: 100%;
-  height: calc(100vh - 200px);
+  height: calc(100vh - 250px);
   min-height: 500px;
-  max-height: 700px;
+  max-height: 650px;
   display: flex;
   align-items: center;
   justify-content: center;
   perspective: 1200px;
   overflow: hidden;
+  padding: var(--spacing-md);
+  box-sizing: border-box;
 }
 
 .presentation-viewport {
@@ -174,15 +179,17 @@ body {
 
 .presentation-slide {
   position: absolute;
-  width: 100%;
-  max-width: 1000px;
-  height: 100%;
+  width: 90%;
+  max-width: 800px;
+  height: auto;
+  max-height: 100%;
   transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
   transform-style: preserve-3d;
   pointer-events: none;
   display: flex;
   align-items: center;
   justify-content: center;
+  box-sizing: border-box;
 }
 
 .presentation-slide.active {
@@ -296,10 +303,10 @@ body {
 
 /* Outline Card Styles */
 .outline-card {
-  width: 100%;
-  max-width: 900px;
+  width: 90%;
+  max-width: 800px;
   height: auto;
-  max-height: calc(100vh - 250px);
+  max-height: calc(100vh - 300px);
   background-color: var(--bg-card);
   border-radius: var(--radius-lg);
   padding: var(--spacing-lg);
@@ -311,6 +318,7 @@ body {
   backdrop-filter: blur(10px);
   margin: 0 auto;
   overflow: hidden;
+  box-sizing: border-box;
 }
 
 .outline-card.card-active {
@@ -1560,77 +1568,66 @@ body {
   font-weight: 600;
 }
 
-.backtest-results {
+.backtest-results-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-lg);
+}
+
+.backtest-metric-card {
   background-color: var(--bg-secondary);
   border-radius: var(--radius-sm);
-  padding: var(--spacing-lg);
-  display: flex;
-  flex-direction: column;
-  gap: var(--spacing-lg);
-}
-
-.result-main {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding-bottom: var(--spacing-md);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.result-metric {
+  padding: var(--spacing-md);
   display: flex;
   flex-direction: column;
   gap: var(--spacing-xs);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: all var(--transition-base);
+}
+
+.backtest-metric-card:hover {
+  border-color: rgba(255, 215, 0, 0.3);
+  background-color: rgba(255, 215, 0, 0.02);
 }
 
 .metric-label {
-  font-size: 0.85rem;
+  font-size: 0.75rem;
   color: var(--text-secondary);
   text-transform: uppercase;
   letter-spacing: 0.05em;
+  font-weight: 600;
 }
 
 .metric-value {
-  font-size: 2.5rem;
+  font-size: 1.1rem;
   font-weight: 700;
   color: var(--text-primary);
 }
 
-.metric-value.positive {
+.metric-value-large {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.metric-value.positive,
+.metric-value-large.positive {
   color: #00ff00;
 }
 
-.metric-value.negative {
+.metric-value.negative,
+.metric-value-large.negative {
   color: #ff4444;
 }
 
-.result-stats {
-  display: flex;
-  flex-direction: column;
-  gap: var(--spacing-sm);
-  align-items: flex-end;
-}
-
-.result-stat {
-  display: flex;
-  gap: var(--spacing-sm);
-}
-
-.result-stat-label {
+.metric-breakdown {
+  font-size: 0.85rem;
   color: var(--text-secondary);
-  font-size: 0.9rem;
+  margin-top: var(--spacing-xs);
 }
 
-.result-stat-value {
-  color: var(--text-primary);
-  font-weight: 600;
-}
-
-.result-stat-value.positive {
-  color: #00ff00;
-}
-
-.result-pnl {
+.backtest-pnl-summary {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -1638,17 +1635,24 @@ body {
   background-color: rgba(0, 255, 0, 0.05);
   border-radius: var(--radius-sm);
   border: 1px solid rgba(0, 255, 0, 0.2);
+  margin-top: var(--spacing-md);
 }
 
 .pnl-label {
   font-size: 1rem;
   color: var(--text-secondary);
   font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
 .pnl-value {
   font-size: 1.5rem;
   font-weight: 700;
+  color: #00ff00;
+}
+
+.pnl-value.positive {
   color: #00ff00;
 }
 

@@ -43,31 +43,68 @@ function BacktestDashboard({ strategy, onClose, onJoinWaitlist }) {
 
           <div className="backtest-section">
             <h3 className="backtest-section-title">Backtest Results</h3>
-            <div className="backtest-results">
-              <div className="result-main">
-                <div className="result-metric">
-                  <span className="metric-label">Win Rate</span>
-                  <span className={`metric-value ${strategy.winRate >= 50 ? 'positive' : 'negative'}`}>
-                    {strategy.winRate}%
-                  </span>
-                </div>
-                <div className="result-stats">
-                  <div className="result-stat">
-                    <span className="result-stat-label">Trades:</span>
-                    <span className="result-stat-value">{strategy.trades}</span>
-                  </div>
-                  <div className="result-stat">
-                    <span className="result-stat-label">Wins:</span>
-                    <span className="result-stat-value positive">{strategy.wins}</span>
-                  </div>
-                </div>
-              </div>
-              <div className="result-pnl">
-                <span className="pnl-label">PnL</span>
-                <span className="pnl-value positive">
-                  {strategy.backtest.pnl} ({strategy.backtest.pnlPercent}%)
+            <div className="backtest-results-grid">
+              <div className="backtest-metric-card">
+                <span className="metric-label">Win Rate</span>
+                <span className={`metric-value-large ${strategy.winRate >= 50 ? 'positive' : 'negative'}`}>
+                  {strategy.winRate}%
+                </span>
+                <span className="metric-breakdown">
+                  {strategy.wins}W / {strategy.backtest.losses || (strategy.trades - strategy.wins)}L
                 </span>
               </div>
+              
+              <div className="backtest-metric-card">
+                <span className="metric-label">Profit Factor</span>
+                <span className="metric-value">{strategy.backtest.profitFactor || 'N/A'}</span>
+              </div>
+              
+              <div className="backtest-metric-card">
+                <span className="metric-label">Total Trades</span>
+                <span className="metric-value">{strategy.trades}</span>
+              </div>
+              
+              <div className="backtest-metric-card">
+                <span className="metric-label">ROI</span>
+                <span className="metric-value positive">{strategy.backtest.roi || strategy.backtest.pnlPercent}</span>
+              </div>
+              
+              <div className="backtest-metric-card">
+                <span className="metric-label">Avg Win</span>
+                <span className="metric-value positive">{strategy.backtest.avgWin || 'N/A'}</span>
+              </div>
+              
+              <div className="backtest-metric-card">
+                <span className="metric-label">Avg Loss</span>
+                <span className="metric-value negative">{strategy.backtest.avgLoss || 'N/A'}</span>
+              </div>
+              
+              <div className="backtest-metric-card">
+                <span className="metric-label">Max Drawdown</span>
+                <span className="metric-value negative">{strategy.backtest.maxDrawdown || 'N/A'}</span>
+              </div>
+              
+              <div className="backtest-metric-card">
+                <span className="metric-label">Current Drawdown</span>
+                <span className="metric-value">{strategy.backtest.currentDrawdown || '0.00%'}</span>
+              </div>
+              
+              <div className="backtest-metric-card">
+                <span className="metric-label">Total Profit</span>
+                <span className="metric-value positive">{strategy.backtest.totalProfit || 'N/A'}</span>
+              </div>
+              
+              <div className="backtest-metric-card">
+                <span className="metric-label">Total Loss</span>
+                <span className="metric-value negative">{strategy.backtest.totalLoss || 'N/A'}</span>
+              </div>
+            </div>
+            
+            <div className="backtest-pnl-summary">
+              <span className="pnl-label">PnL</span>
+              <span className="pnl-value positive">
+                {strategy.backtest.pnl} ({strategy.backtest.pnlPercent}%)
+              </span>
             </div>
           </div>
 

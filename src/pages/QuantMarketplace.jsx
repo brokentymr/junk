@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import NavBar from '../components/NavBar'
 import StrategyCard from '../components/StrategyCard'
 import BacktestDashboard from '../components/BacktestDashboard'
 import {
@@ -34,7 +33,16 @@ const strategies = [
       signalsLong: 255,
       signalsShort: 245,
       pnl: "+$12,450.00",
-      pnlPercent: "+12.45"
+      pnlPercent: "+12.45",
+      profitFactor: 14.37,
+      avgWin: "$1,888.24",
+      avgLoss: "$131.38",
+      maxDrawdown: "0.06%",
+      currentDrawdown: "0.00%",
+      totalProfit: "$13,217.67",
+      totalLoss: "$919.63",
+      roi: "+12.30%",
+      losses: 41
     },
     waitlistUrl: "https://form.typeform.com/to/placeholder"
   },
@@ -57,7 +65,16 @@ const strategies = [
       signalsLong: 255,
       signalsShort: 245,
       pnl: "+$8,920.00",
-      pnlPercent: "+8.92"
+      pnlPercent: "+8.92",
+      profitFactor: 12.45,
+      avgWin: "$1,245.60",
+      avgLoss: "$98.20",
+      maxDrawdown: "0.08%",
+      currentDrawdown: "0.00%",
+      totalProfit: "$9,591.20",
+      totalLoss: "$671.20",
+      roi: "+8.92%",
+      losses: 17
     },
     waitlistUrl: "https://form.typeform.com/to/placeholder"
   },
@@ -80,7 +97,16 @@ const strategies = [
       signalsLong: 255,
       signalsShort: 245,
       pnl: "+$15,340.00",
-      pnlPercent: "+15.34"
+      pnlPercent: "+15.34",
+      profitFactor: 8.92,
+      avgWin: "$892.50",
+      avgLoss: "$145.30",
+      maxDrawdown: "0.12%",
+      currentDrawdown: "0.00%",
+      totalProfit: "$15,315.00",
+      totalLoss: "$1,975.00",
+      roi: "+15.34%",
+      losses: 85
     },
     waitlistUrl: "https://form.typeform.com/to/placeholder"
   },
@@ -103,7 +129,16 @@ const strategies = [
       signalsLong: 255,
       signalsShort: 245,
       pnl: "+$22,180.00",
-      pnlPercent: "+22.18"
+      pnlPercent: "+22.18",
+      profitFactor: 18.75,
+      avgWin: "$2,218.00",
+      avgLoss: "$118.40",
+      maxDrawdown: "0.15%",
+      currentDrawdown: "0.00%",
+      totalProfit: "$22,180.00",
+      totalLoss: "$1,183.20",
+      roi: "+22.18%",
+      losses: 49
     },
     waitlistUrl: "https://form.typeform.com/to/placeholder"
   },
@@ -126,7 +161,16 @@ const strategies = [
       signalsLong: 255,
       signalsShort: 245,
       pnl: "+$9,670.00",
-      pnlPercent: "+9.67"
+      pnlPercent: "+9.67",
+      profitFactor: 6.25,
+      avgWin: "$645.33",
+      avgLoss: "$103.20",
+      maxDrawdown: "0.10%",
+      currentDrawdown: "0.00%",
+      totalProfit: "$9,670.00",
+      totalLoss: "$1,547.20",
+      roi: "+9.67%",
+      losses: 75
     },
     waitlistUrl: "https://form.typeform.com/to/placeholder"
   },
@@ -149,7 +193,16 @@ const strategies = [
       signalsLong: 255,
       signalsShort: 245,
       pnl: "+$7,890.00",
-      pnlPercent: "+7.89"
+      pnlPercent: "+7.89",
+      profitFactor: 5.42,
+      avgWin: "$387.50",
+      avgLoss: "$71.50",
+      maxDrawdown: "0.05%",
+      currentDrawdown: "0.00%",
+      totalProfit: "$7,890.00",
+      totalLoss: "$1,455.00",
+      roi: "+7.89%",
+      losses: 68
     },
     waitlistUrl: "https://form.typeform.com/to/placeholder"
   },
@@ -172,7 +225,16 @@ const strategies = [
       signalsLong: 255,
       signalsShort: 245,
       pnl: "+$6,540.00",
-      pnlPercent: "+6.54"
+      pnlPercent: "+6.54",
+      profitFactor: 4.18,
+      avgWin: "$234.50",
+      avgLoss: "$56.10",
+      maxDrawdown: "0.04%",
+      currentDrawdown: "0.00%",
+      totalProfit: "$6,540.00",
+      totalLoss: "$1,565.40",
+      roi: "+6.54%",
+      losses: 75
     },
     waitlistUrl: "https://form.typeform.com/to/placeholder"
   },
@@ -195,7 +257,16 @@ const strategies = [
       signalsLong: 255,
       signalsShort: 245,
       pnl: "+$5,545.00",
-      pnlPercent: "+5.54"
+      pnlPercent: "+5.54",
+      profitFactor: 3.25,
+      avgWin: "$1,888.24",
+      avgLoss: "$580.80",
+      maxDrawdown: "0.06%",
+      currentDrawdown: "0.00%",
+      totalProfit: "$13,217.67",
+      totalLoss: "$4,067.52",
+      roi: "+5.54%",
+      losses: 39
     },
     waitlistUrl: "https://form.typeform.com/to/placeholder"
   }
@@ -223,7 +294,6 @@ function QuantMarketplace() {
 
   return (
     <div className="page">
-      <NavBar />
       <div className="page-content">
         <h1 className="page-title">Quant Marketplace</h1>
         
