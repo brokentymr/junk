@@ -96,6 +96,7 @@ function CardSlider({ cards }) {
                   thumbnail={card.thumbnail}
                   script={card.script}
                   isActive={isActive}
+                  animationType={card.animationType}
                 />
               </div>
             )
