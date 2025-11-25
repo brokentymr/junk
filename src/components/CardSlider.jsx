@@ -1,12 +1,19 @@
 import { useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 import OutlineCard from './OutlineCard'
 import '../styles/globals.css'
 
 function CardSlider({ cards }) {
   const [currentIndex, setCurrentIndex] = useState(0)
+  const navigate = useNavigate()
+  const isLastCard = currentIndex === cards.length - 1
 
   const goToNext = () => {
-    setCurrentIndex((prev) => (prev + 1) % cards.length)
+    if (isLastCard) {
+      navigate('/marketplace')
+    } else {
+      setCurrentIndex((prev) => (prev + 1) % cards.length)
+    }
   }
 
   const goToPrevious = () => {
@@ -96,11 +103,11 @@ function CardSlider({ cards }) {
         </div>
 
         <button 
-          className="presentation-nav presentation-nav-right"
+          className={`presentation-nav presentation-nav-right ${isLastCard ? 'nav-explore' : ''}`}
           onClick={goToNext}
-          aria-label="Next slide"
+          aria-label={isLastCard ? "Explore marketplace" : "Next slide"}
         >
-          ›
+          {isLastCard ? 'Explore Marketplace' : '›'}
         </button>
       </div>
 

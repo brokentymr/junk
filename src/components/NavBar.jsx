@@ -15,13 +15,13 @@ function NavBar() {
             to="/video-1" 
             className={`navbar-link ${location.pathname === '/video-1' ? 'active' : ''}`}
           >
-            Video 1
+            Overview
           </Link>
           <Link 
-            to="/video-2" 
-            className={`navbar-link ${location.pathname === '/video-2' ? 'active' : ''}`}
+            to="/marketplace" 
+            className={`navbar-link ${location.pathname === '/marketplace' ? 'active' : ''}`}
           >
-            Video 2
+            Marketplace
           </Link>
         </div>
       </div>
