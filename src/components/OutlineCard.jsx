@@ -14,23 +14,10 @@ function OutlineCard({ title, body, thumbnail, script, isActive, animationType }
           )}
           
           {animationType === 'neural-network' && (
-            <div className="visualizer-spectrum">
-              <svg viewBox="0 0 200 150" className="spectrum-svg">
-                <defs>
-                  <linearGradient id="spectrumGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-                    <stop offset="0%" stopColor="#ffd700" />
-                    <stop offset="50%" stopColor="#ff6600" />
-                    <stop offset="100%" stopColor="#ffd700" />
-                  </linearGradient>
-                </defs>
-                {[...Array(40)].map((_, i) => {
-                  const x = (i / 40) * 200;
-                  const height = 20 + Math.sin(i * 0.5) * 30 + Math.random() * 20;
-                  return (
-                    <rect key={i} x={x} y={75 - height/2} width="4" height={height} fill="url(#spectrumGrad)" className="spectrum-bar" style={{ '--delay': i * 0.02 + 's' }} />
-                  );
-                })}
-              </svg>
+            <div className="visualizer-pingpong">
+              {[...Array(5)].map((_, i) => (
+                <div key={i} className="pingpong-ball"></div>
+              ))}
             </div>
           )}
           
@@ -55,16 +42,13 @@ function OutlineCard({ title, body, thumbnail, script, isActive, animationType }
           )}
           
           {animationType === 'vault-stacking' && (
-            <div className="visualizer-waterfall">
-              <svg viewBox="0 0 200 150" className="waterfall-svg">
-                {[...Array(20)].map((_, i) => {
-                  const x = (i / 20) * 200;
-                  const height = 10 + Math.sin(i * 0.8) * 40 + Math.random() * 30;
-                  return (
-                    <rect key={i} x={x} y={150 - height} width="8" height={height} fill="#ffd700" className="waterfall-bar" style={{ '--delay': i * 0.03 + 's' }} />
-                  );
-                })}
-              </svg>
+            <div className="visualizer-vault">
+              <div className="vault-door">
+                <div className="vault-door-left"></div>
+                <div className="vault-door-right"></div>
+                <div className="vault-wheel"></div>
+                <div className="vault-lock"></div>
+              </div>
             </div>
           )}
           
