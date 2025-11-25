@@ -1,74 +1,123 @@
-import { useRef, useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import OutlineCard from './OutlineCard'
 import '../styles/globals.css'
 
 function CardSlider({ cards }) {
-  const sliderRef = useRef(null)
-  const [showLeftArrow, setShowLeftArrow] = useState(false)
-  const [showRightArrow, setShowRightArrow] = useState(true)
+  const [currentIndex, setCurrentIndex] = useState(0)
 
-  const checkScrollPosition = () => {
-    if (sliderRef.current) {
-      const { scrollLeft, scrollWidth, clientWidth } = sliderRef.current
-      setShowLeftArrow(scrollLeft > 0)
-      setShowRightArrow(scrollLeft < scrollWidth - clientWidth - 10)
-    }
+  const goToNext = () => {
+    setCurrentIndex((prev) => (prev + 1) % cards.length)
   }
 
-  useEffect(() => {
-    const slider = sliderRef.current
-    if (slider) {
-      checkScrollPosition()
-      slider.addEventListener('scroll', checkScrollPosition)
-      window.addEventListener('resize', checkScrollPosition)
-      return () => {
-        slider.removeEventListener('scroll', checkScrollPosition)
-        window.removeEventListener('resize', checkScrollPosition)
-      }
-    }
-  }, [cards])
+  const goToPrevious = () => {
+    setCurrentIndex((prev) => (prev - 1 + cards.length) % cards.length)
+  }
 
-  const scroll = (direction) => {
-    if (sliderRef.current) {
-      const cardWidth = sliderRef.current.children[0]?.offsetWidth || 320
-      const scrollAmount = cardWidth + 16 // card width + gap
-      sliderRef.current.scrollBy({
-        left: direction === 'left' ? -scrollAmount : scrollAmount,
-        behavior: 'smooth'
-      })
+  // Keyboard navigation
+  useEffect(() => {
+    const handleKeyPress = (e) => {
+      if (e.key === 'ArrowLeft') goToPrevious()
+      if (e.key === 'ArrowRight') goToNext()
     }
+    window.addEventListener('keydown', handleKeyPress)
+    return () => window.removeEventListener('keydown', handleKeyPress)
+  }, [])
+
+  // Touch/swipe support
+  const [touchStart, setTouchStart] = useState(null)
+  const [touchEnd, setTouchEnd] = useState(null)
+
+  const minSwipeDistance = 50
+
+  const onTouchStart = (e) => {
+    setTouchEnd(null)
+    setTouchStart(e.targetTouches[0].clientX)
+  }
+
+  const onTouchMove = (e) => {
+    setTouchEnd(e.targetTouches[0].clientX)
+  }
+
+  const onTouchEnd = () => {
+    if (!touchStart || !touchEnd) return
+    const distance = touchStart - touchEnd
+    const isLeftSwipe = distance > minSwipeDistance
+    const isRightSwipe = distance < -minSwipeDistance
+    if (isLeftSwipe) goToNext()
+    if (isRightSwipe) goToPrevious()
   }
 
   return (
-    <div className="card-slider-wrapper">
-      {showLeftArrow && (
+    <div className="presentation-wrapper">
+      <div 
+        className="presentation-container"
+        onTouchStart={onTouchStart}
+        onTouchMove={onTouchMove}
+        onTouchEnd={onTouchEnd}
+      >
         <button 
-          className="card-slider-arrow card-slider-arrow-left"
-          onClick={() => scroll('left')}
-          aria-label="Scroll left"
+          className="presentation-nav presentation-nav-left"
+          onClick={goToPrevious}
+          aria-label="Previous slide"
         >
           ‹
         </button>
-      )}
-      <div className="card-slider" ref={sliderRef}>
-        {cards.map((card, index) => (
-          <OutlineCard
-            key={index}
-            title={card.title}
-            body={card.body}
-            thumbnail={card.thumbnail}
-          />
-        ))}
-      </div>
-      {showRightArrow && (
+
+        <div className="presentation-viewport">
+          {cards.map((card, index) => {
+            const offset = index - currentIndex
+            const isActive = offset === 0
+            const isLeft = offset < 0
+            const isRight = offset > 0
+            
+            return (
+              <div
+                key={index}
+                className={`presentation-slide ${
+                  isActive ? 'active' : 
+                  isLeft ? 'left' : 
+                  isRight ? 'right' : ''
+                }`}
+                style={{
+                  '--offset': offset,
+                  '--abs-offset': Math.abs(offset)
+                }}
+              >
+                <OutlineCard
+                  title={card.title}
+                  body={card.body}
+                  thumbnail={card.thumbnail}
+                  script={card.script}
+                  isActive={isActive}
+                />
+              </div>
+            )
+          })}
+        </div>
+
         <button 
-          className="card-slider-arrow card-slider-arrow-right"
-          onClick={() => scroll('right')}
-          aria-label="Scroll right"
+          className="presentation-nav presentation-nav-right"
+          onClick={goToNext}
+          aria-label="Next slide"
         >
           ›
         </button>
-      )}
+      </div>
+
+      <div className="presentation-indicators">
+        {cards.map((_, index) => (
+          <button
+            key={index}
+            className={`presentation-indicator ${index === currentIndex ? 'active' : ''}`}
+            onClick={() => setCurrentIndex(index)}
+            aria-label={`Go to slide ${index + 1}`}
+          />
+        ))}
+      </div>
+
+      <div className="presentation-counter">
+        {currentIndex + 1} / {cards.length}
+      </div>
     </div>
   )
 }
