@@ -25,6 +25,8 @@ const strategies = [
     apr: 245,
     trades: 127,
     wins: 86,
+    chartPath: "M 0,60 L 20,55 L 40,45 L 60,35 L 80,25 L 100,20 L 120,15 L 140,10 L 160,8 L 180,5 L 200,3 L 200,80 L 0,80 Z",
+    chartDots: [{x: 40, y: 45}, {x: 100, y: 20}, {x: 180, y: 5}],
     backtest: {
       barsLoaded: "500 bars (5d 4h of data)",
       builtBars: "500 15m",
@@ -46,6 +48,8 @@ const strategies = [
     apr: 189,
     trades: 94,
     wins: 77,
+    chartPath: "M 0,40 L 25,38 L 50,40 L 75,38 L 100,40 L 125,38 L 150,40 L 175,38 L 200,40 L 200,80 L 0,80 Z",
+    chartDots: [{x: 50, y: 40}, {x: 100, y: 40}, {x: 150, y: 40}],
     backtest: {
       barsLoaded: "500 bars (5d 4h of data)",
       builtBars: "500 15m",
@@ -67,6 +71,8 @@ const strategies = [
     apr: 156,
     trades: 203,
     wins: 118,
+    chartPath: "M 0,50 L 30,30 L 60,50 L 90,30 L 120,50 L 150,30 L 180,50 L 200,40 L 200,80 L 0,80 Z",
+    chartDots: [{x: 30, y: 30}, {x: 90, y: 30}, {x: 150, y: 30}],
     backtest: {
       barsLoaded: "500 bars (5d 4h of data)",
       builtBars: "500 15m",
@@ -88,6 +94,8 @@ const strategies = [
     apr: 312,
     trades: 89,
     wins: 40,
+    chartPath: "M 0,40 L 20,60 L 40,20 L 60,70 L 80,10 L 100,65 L 120,25 L 140,55 L 160,15 L 180,50 L 200,30 L 200,80 L 0,80 Z",
+    chartDots: [{x: 40, y: 20}, {x: 80, y: 10}, {x: 160, y: 15}],
     backtest: {
       barsLoaded: "500 bars (5d 4h of data)",
       builtBars: "500 15m",
@@ -109,6 +117,8 @@ const strategies = [
     apr: 178,
     trades: 156,
     wins: 81,
+    chartPath: "M 0,70 L 25,65 L 50,55 L 75,45 L 100,35 L 125,25 L 150,20 L 175,15 L 200,10 L 200,80 L 0,80 Z",
+    chartDots: [{x: 50, y: 55}, {x: 100, y: 35}, {x: 175, y: 15}],
     backtest: {
       barsLoaded: "500 bars (5d 4h of data)",
       builtBars: "500 15m",
@@ -130,6 +140,8 @@ const strategies = [
     apr: 134,
     trades: 234,
     wins: 166,
+    chartPath: "M 0,50 L 25,45 L 50,50 L 75,45 L 100,50 L 125,45 L 150,50 L 175,45 L 200,50 L 200,80 L 0,80 Z",
+    chartDots: [{x: 25, y: 45}, {x: 75, y: 45}, {x: 125, y: 45}],
     backtest: {
       barsLoaded: "500 bars (5d 4h of data)",
       builtBars: "500 15m",
@@ -151,6 +163,8 @@ const strategies = [
     apr: 98,
     trades: 312,
     wins: 237,
+    chartPath: "M 0,50 L 30,48 L 60,50 L 90,48 L 120,50 L 150,48 L 180,50 L 200,49 L 200,80 L 0,80 Z",
+    chartDots: [{x: 30, y: 48}, {x: 90, y: 48}, {x: 150, y: 48}],
     backtest: {
       barsLoaded: "500 bars (5d 4h of data)",
       builtBars: "500 15m",
@@ -172,6 +186,8 @@ const strategies = [
     apr: 445,
     trades: 57,
     wins: 18,
+    chartPath: "M 0,50 L 15,48 L 30,52 L 45,47 L 60,53 L 75,46 L 90,54 L 105,45 L 120,55 L 135,44 L 150,56 L 165,43 L 180,57 L 200,42 L 200,80 L 0,80 Z",
+    chartDots: [{x: 30, y: 52}, {x: 90, y: 54}, {x: 150, y: 56}],
     backtest: {
       barsLoaded: "500 bars (5d 4h of data)",
       builtBars: "500 15m",

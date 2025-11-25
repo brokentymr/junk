@@ -594,12 +594,12 @@ body {
   background-color: var(--bg-card);
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: var(--radius-md);
-  padding: var(--spacing-lg);
+  padding: 0;
   cursor: pointer;
   transition: all var(--transition-base);
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-md);
+  overflow: hidden;
 }
 
 .strategy-card:hover {
@@ -607,6 +607,120 @@ body {
   border-color: var(--accent-yellow);
   box-shadow: 0 8px 24px rgba(255, 215, 0, 0.2);
   background-color: rgba(255, 215, 0, 0.02);
+}
+
+.strategy-card-thumbnail {
+  width: 100%;
+  height: 180px;
+  background: linear-gradient(135deg, var(--bg-secondary) 0%, #1a1a1a 100%);
+  position: relative;
+  overflow: hidden;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.wireframe-animation {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.wireframe-chart {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.chart-area {
+  animation: chartPulse 3s ease-in-out infinite;
+}
+
+.chart-line {
+  animation: chartDraw 2s ease-in-out;
+}
+
+.chart-dot {
+  animation: dotPulse 2s ease-in-out infinite;
+  animation-delay: calc(var(--i, 0) * 0.3s);
+}
+
+@keyframes chartPulse {
+  0%, 100% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+@keyframes chartDraw {
+  0% {
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+  }
+  100% {
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes dotPulse {
+  0%, 100% {
+    opacity: 0.6;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+}
+
+.wireframe-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle at center, rgba(255, 215, 0, 0.05) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.wireframe-icon {
+  width: 48px;
+  height: 48px;
+  opacity: 0.3;
+  color: var(--accent-yellow);
+  animation: iconFloat 3s ease-in-out infinite;
+}
+
+.wireframe-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+@keyframes iconFloat {
+  0%, 100% {
+    transform: translateY(0) scale(1);
+    opacity: 0.3;
+  }
+  50% {
+    transform: translateY(-8px) scale(1.1);
+    opacity: 0.5;
+  }
+}
+
+.strategy-card-content {
+  padding: var(--spacing-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
 }
 
 .strategy-card-header {
